@@ -48,3 +48,8 @@ target_link_libraries(clock
   ${OPENGL_LIBRARIES}
   )
 add_dependencies(clock glfw nanovg ${COPY_BINARY})
+
+# assignment 4
+add_executable(aufgabe4
+  aufgabe_2_und_3.cpp
+)
