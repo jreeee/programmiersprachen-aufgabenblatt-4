@@ -29,21 +29,20 @@ int main(int argc, char* argv[])
 
   std::cout << "4.2.2 - All the elements not present in the vector:\n";
   auto itr = st.begin();
-  int lnbrk = 10;
+  unsigned int lnbrk = 0;
   for (unsigned int i = 0; i < 101; ++i) {
     if (*itr == i) {
       ++itr;
     } 
     else {
-      if (lnbrk == 10) { 
+      if ((lnbrk % 10) == 0 ) { 
         std::cout << "\n\t";
-        lnbrk = 0;
       }
-      (*itr == *st.rbegin()) ? std::cout << i << "\n\n" : std::cout << i << ", "; //st.rbegin() behaving strange 
+      (100 - lnbrk == st.size()) ? std::cout << i << "\n\n" : std::cout << i << ", "; //st.rbegin() behaving strange 
       lnbrk++;
     }
   }
-  
+
   //4.3
 
   std::cout << "\n4.3 - Elements and their number of occurrences\n\n";
