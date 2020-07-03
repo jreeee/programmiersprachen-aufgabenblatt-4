@@ -9,6 +9,7 @@ class Circle {
 
     public:
     Circle();
+    Circle(float f); //4.5
     Circle(float f, Vec2 const& v);
     Circle(Vec2 const& v, float f);
     Circle(float const f, Vec2 const& v, Color const& c);
@@ -27,5 +28,10 @@ class Circle {
     Color col_;
     Color highlight_color_;
 };
+
+//added for 4.5
+bool operator<(Circle const& rhs, Circle const& lhs);
+bool operator>(Circle const& rhs, Circle const& lhs);
+bool operator==(Circle const& rhs, Circle const& lhs);
 
 #endif

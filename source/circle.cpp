@@ -14,6 +14,11 @@ Circle::Circle() {
     col_ = {};
     highlight_color_ = {1.0f, 0.0f, 0.0f};
 }
+//4.5
+Circle::Circle(float f) {
+    mid_ = {1.0f, 1.0f};
+    rad_ = f;
+}
 Circle::Circle(float f, Vec2 const& v) {
     rad_ = f;
     mid_ = v;
@@ -91,4 +96,15 @@ void Circle::line(Window const& w, float time, float passed, float thickness, fl
         v1 = mid_ + v1;
         w.draw_line(v1.x_, v1.y_, mid_.x_, mid_.y_, col_.r_, col_.g_, col_.b_, thickness);
     }
+}
+
+//4.5
+bool operator<(Circle const& rhs, Circle const& lhs) {
+    return rhs.circumference() < lhs.circumference();
+}
+bool operator>(Circle const& rhs, Circle const& lhs) {
+    return rhs.circumference() > lhs.circumference();
+}
+bool operator==(Circle const& rhs, Circle const& lhs) {
+    return rhs.circumference() == lhs.circumference();
 }
