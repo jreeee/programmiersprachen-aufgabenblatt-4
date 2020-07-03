@@ -1,12 +1,12 @@
-#include <vector>
-#include <set>
-#include <map>
+#include <vector>     //std::vector<>
+#include <set>        //std::set<>
+#include <map>        //std::map<>
 
-#include <algorithm>
-#include <cstdlib>
-#include <ctime>
+#include <algorithm>  //std::tansform()
+#include <cstdlib>    //std::rand() / std::srand()
+#include <ctime>      //std::time()
 
-#include <iostream>
+#include <iostream>   //std::cout
 
 int main(int argc, char* argv[])
 {
