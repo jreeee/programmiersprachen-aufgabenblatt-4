@@ -38,22 +38,38 @@ int main(int argc, char* argv[])
       if ((lnbrk % 10) == 0 ) { 
         std::cout << "\n\t";
       }
-      (100 - lnbrk == st.size()) ? std::cout << i << "\n\n" : std::cout << i << ", "; //st.rbegin() behaving strange 
+      (100 - lnbrk == st.size()) ? std::cout << i << "\n\n" : std::cout << i << ", ";
       lnbrk++;
     }
   }
 
   //4.3
 
-  std::cout << "\n4.3 - Elements and their number of occurrences\n\n";
+  std::cout << "\n4.3 - Elements and their number of occurrences\n";
   std::map<unsigned int, unsigned int> mp{};
-  for (auto i : vec) {
-    //idk duuud
+  for (int i = 0; i < 101; ++i) {
+    mp.insert(std::pair<unsigned int, unsigned int>(i, 0));
   }
- /*
- for (auto i : vec) {
-   std::cout << i << "\n";
+  for (auto i : vec) {
+    mp.find(i)->second++;
+  }
+
+ lnbrk = 0;
+ for (auto i : mp) {
+   if ((lnbrk % 10) == 0 ) { 
+        std::cout << "\n\t| ";
+      }
+   if (lnbrk < 10) {
+     std::cout << i.first << "  : " << i.second << " | ";
+   }
+   if ((lnbrk > 9) && (lnbrk < 100)) {
+      std::cout << i.first << " : " << i.second << " | ";
+   }
+   if (lnbrk == 100) {
+      std::cout << i.first << ": " << i.second << " |\n\n";
+   }
+   lnbrk++;
  }
- */
+
   return 0;
 }
