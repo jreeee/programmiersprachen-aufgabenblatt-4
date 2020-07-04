@@ -42,6 +42,9 @@ Circle::Circle(float f, Vec2 const& v, Color const& c, Color const& h) {
 float Circle::circumference() const {
     return 2 * M_PI * abs(rad_);
 }
+float Circle::radius() const { //4.5
+    return rad_;
+}
 void Circle::draw(Window const& w) const {
     draw(w, false, 1.0f);
 }
@@ -100,11 +103,11 @@ void Circle::line(Window const& w, float time, float passed, float thickness, fl
 
 //4.5
 bool operator<(Circle const& rhs, Circle const& lhs) {
-    return rhs.circumference() < lhs.circumference();
+    return rhs.radius() < lhs.radius();
 }
 bool operator>(Circle const& rhs, Circle const& lhs) {
-    return rhs.circumference() > lhs.circumference();
+    return rhs.radius() > lhs.radius();
 }
 bool operator==(Circle const& rhs, Circle const& lhs) {
-    return rhs.circumference() == lhs.circumference();
+    return rhs.radius() == lhs.radius();
 }
