@@ -1,6 +1,8 @@
 #include <vector>     //std::vector<>
 #include <set>        //std::set<>
 #include <map>        //std::map<>
+#include <list>       //std::list<> - for 4.9
+#include <iterator>   //std::ostream_iterator<> - for 4.9
 
 #include <algorithm>  //std::tansform()
 #include <cstdlib>    //std::rand() / std::srand()
@@ -93,5 +95,19 @@ int main(int argc, char* argv[])
     }
     lnbrk++;
   }
+
+  //4.9
+
+  /*
+  Initialization of a new list.
+  Using copy to iterate over the vector and add each new element to the end of list.
+  Printing the last ten values using copy (and ostream_it).
+  */
+  std::cout << "\n4.9 - the last ten elements of the list\n\n";
+  std::list<unsigned int> lst;
+  std::copy(vec.begin(), vec.end(), lst.end());
+  std::copy(vec.end()-10, vec.end(), std::ostream_iterator<int>(std::cout, "\n"));
+  std::cout << "\n";
+
   return 0;
 }
