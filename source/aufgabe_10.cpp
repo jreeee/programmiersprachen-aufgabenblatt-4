@@ -1,22 +1,22 @@
 #define CATCH_CONFIG_RUNNER
 #include "catch.hpp"
-#include <cmath>
-#include <algorithm>
-#include <vector>
-#include <cstdlib>
-#include <functional>
+#include <cmath>      
+#include <algorithm>  //std::remove_if, std::all_of
+#include <vector>     //std::vector<> 
+#include <cstdlib>    //std::rand
 
 //helper function to determine if the int is a multiple of three
 bool is_multiple_of_3(unsigned int i) {
   return ((i % 3) == 0);
 }
-TEST_CASE()
-{
-  /*
+
+ /*
   generating a vector with 100 random unsigned ints inside, using the
   Erase-remove idiom to delete all elements which are not a multiple of 3
   testing if the vector only contains elements which are multiples of 3.
   */
+TEST_CASE()
+{
   std::vector<unsigned int> v(100);
   std::generate(v.begin(), v.end(), rand);
   v.erase(std::remove_if(v.begin(), v.end(), [] (unsigned int i) {return ((i % 3) != 0);}), v.end());
