@@ -13,6 +13,7 @@ Circle::Circle() {
     rad_ = 50.0f;
     col_ = {};
     highlight_color_ = {1.0f, 0.0f, 0.0f};
+    name_ = "default"; //4.14
 }
 //4.5
 Circle::Circle(float f) {
@@ -32,6 +33,14 @@ Circle::Circle(float f, Vec2 const& v, Color const& c) {
     highlight_color_ = {1.0f, 0.0f, 0.0f};
 }
 
+Circle::Circle(Vec2 const& v, float f, Color const& c, std::string const& n) {
+    rad_ = f;
+    mid_ = v;
+    col_ = c;
+    highlight_color_ = {1.0f, 0.0f, 0.0f};
+    name_ = n; //4.14
+}
+
 Circle::Circle(float f, Vec2 const& v, Color const& c, Color const& h) {
     rad_ = f;
     mid_ = v;
@@ -44,6 +53,9 @@ float Circle::circumference() const {
 }
 float Circle::radius() const { //4.5
     return rad_;
+}
+std::string Circle::name() const { //4.14
+    return name_;
 }
 void Circle::draw(Window const& w) const {
     draw(w, false, 1.0f);

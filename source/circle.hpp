@@ -14,10 +14,12 @@ class Circle {
     Circle(Vec2 const& v, float f);
     Circle(float const f, Vec2 const& v, Color const& c);
     Circle(Vec2 const& v, float const f, Color const& c);
+    Circle(Vec2 const& v, float const f, Color const& c, std::string const& n); //4.14
     Circle(float const f, Vec2 const& v, Color const& c, Color const& h);
 
     float circumference() const;
     float radius() const;
+    std::string name() const;
     void draw(Window const& w) const;
     void draw(Window const& w, bool highlight = false, float t = 1.0f) const;
     bool is_inside(Vec2 const& v) const;
@@ -28,6 +30,7 @@ class Circle {
     float rad_;
     Color col_;
     Color highlight_color_;
+    std::string name_;      //4.14
 };
 
 //added for 4.5

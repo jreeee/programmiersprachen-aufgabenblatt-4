@@ -6,7 +6,8 @@
 
 /*
 creating a vector containing multiple circles with unique radii and an empty one,
-using copy_if to copy every
+using copy_if to copy every Circle with a radius greater than four into the new vector
+checking if the newly populated vector meets the requirements
 */
 TEST_CASE()
 {
