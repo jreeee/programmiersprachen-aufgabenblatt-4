@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_RUNNER
 #include "catch.hpp"
 #include <cmath>      
-#include <algorithm>  //std::remove_if, std::all_of
+#include <algorithm>  //std::remove_if, std::all_of, std::generate
 #include <vector>     //std::vector<> 
 #include <cstdlib>    //std::rand
 
