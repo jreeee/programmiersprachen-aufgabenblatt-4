@@ -6,20 +6,22 @@
 #include <cstdlib>
 #include <functional>
 
-template<typename T> 
-T filter(T const& s, const std::function<bool(const T&)>predicate)
+template<class T, class UnaryPredicate> 
+//T filter(T const& s, const std::function<bool(const element&)>predicate)
+T filter(T s, UnaryPredicate p)
 {
   T nw;
-  return nw.back(std::any_of(s.begin(), s.end(), [&] (const T& t) {return predicate}));
-  //s.erase(std::remove_if(s.begin(), s.end(), [] (auto i) {return ((i % 2) != 0);}), s.end());
+  //std::copy (s.begin(), s.end(), nw.end());
+  //return (std::remove_if(nw.begin(), nw.end(), p));
+  return (std::copy_if (s.begin(), s.end(), nw.end(), p));
 }
+
 TEST_CASE()
 {
-  bool is_even = [] (int n) -> bool { return n % 2 == 0;};
+  std::function<bool(int)>is_even = [] (int n) { return n % 2 == 0; };
   std::vector<int> v{1, 2, 3, 4, 5, 6};
   std::vector<int> all_even = filter(v, is_even);
- 
-  
+
   REQUIRE(std::all_of(all_even.begin(), all_even.end(), [] (int i) {return (i % 2) == 0;}));
 }
 
