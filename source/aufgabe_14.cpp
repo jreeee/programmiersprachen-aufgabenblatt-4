@@ -1,22 +1,22 @@
-#include "window.hpp"
-#include <GLFW/glfw3.h>
-#include <utility>
-#include <set>
-#include <vector>
-#include <algorithm>
-#include <iostream>
-#include <iterator>   //std::ostream_iterator<>
-#include <functional>
-#include <thread>
-#include <chrono>
+#include "window.hpp"   //fensterchen
+#include <GLFW/glfw3.h> //window & draw
+#include <set>          //std:set<>
+#include <vector>       //std::vector<>
+#include <iostream>    //std::cout, std::cin
+#include <thread>      //for sleeping
+#include <chrono>      //for sleeping
 
 #include "circle.hpp"
-#include "rectangle.hpp"
-#include "color.hpp"
-#include "vec2.hpp"
 
-#include <cmath>
-
+/*
+First I initialize all Circles in a vector, since that is the most convenient way for me.
+I then initialize the multiset and fill it with copys  the circles of the vector.
+Then I write a comparison function in a lambda to check if a string is equal to the name of a circle.
+After that I show all of the circle names so the user doesn't have to guess them. 
+They are then prompted to enter one of the names.
+If there are one or more circles with that name they get highlighted for 10 seconds.
+Otherwise the user is told, that there are no circles with the entered name.
+*/
 
 int main(int argc, char* argv[])
 {
@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
         circles.emplace(i);
     }
 
-    auto comp = [] (std::string const& s, Circle c) {return s == c.name(); };
+    auto comp = [] (std::string const& s, Circle const& c) {return s == c.name(); };
 
     while (!win.should_close()) {
         if (win.get_key(GLFW_KEY_ESCAPE) == GLFW_PRESS) {
@@ -55,29 +55,24 @@ int main(int argc, char* argv[])
         for (auto i : circles) {
             std::cout << i.name() << " ";
         }
-        std::cout << "\n\nplease enter the name of the circle you want to highight\n\n";
+        std::cout << "\n\nplease enter the name of the circle you want to highight\n\n>";
         std::string str; 
         std::cin >> str;
-        bool cont_circ;
+
         bool found = false;
         for (auto i : circles) {
-            cont_circ = comp(str, i);
-            cont_circ ? i.draw(win, true, 2.0f) : i.draw(win, false, 2.0f); 
-            if (!found && cont_circ) found = true;
+            comp(str, i) ? i.draw(win, true, 2.0f) : i.draw(win, false, 2.0f); 
+            if (!found && comp(str, i)) found = true;
         }
 
         win.update();
-        
+
         if (found) {
-            std::cout << "\n-> hightlighting circle " << str << " for 10 seconds\n";
+            std::cout << "\n-> hightlighting circle " << str << " for 10 seconds\n\n";
             std::this_thread::sleep_for(std::chrono::seconds(10));
         } else {
-            std::cout << "\n-> the specified circle could not be found\n";
+            std::cout << "\n-> the specified circle could not be found\n\n";
         }
-
-        
-
-        
     }
     return 0;
 }
