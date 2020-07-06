@@ -4,6 +4,9 @@
 #include <algorithm>  //std::remove_if, std::all_of, std::generate
 #include <vector>     //std::vector<> 
 #include <functional> //std::function
+#include <map>        //std::map<>
+#include <array>      //std::array<>
+
 
 
 template<class T, class UnaryPredicate> 
@@ -22,12 +25,10 @@ TEST_CASE()
 {
   //bool is_even = [] (int n) { return n % 2 == 0; };
   std::function<bool(int)>is_even = [] (int n) { return (n % 2 == 0); };
+
   std::vector<int> v{1, 2, 3, 4, 5, 6};
   std::vector<int> all_even = filter(v, is_even);
-  for (auto i : all_even) {
-    std::cout << i << " ";
-  }
-
+  
   REQUIRE(std::all_of(all_even.begin(), all_even.end(), [] (int i) {return (i % 2) == 0;}));
 }
 
