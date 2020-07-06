@@ -5,24 +5,28 @@
 #include <vector>     //std::vector<> 
 #include <functional> //std::function
 
+
 template<class T, class UnaryPredicate> 
-T filter(T s, UnaryPredicate p)
+T filter(T const& s, const UnaryPredicate p)
 {
-  T nw;
-  using std::begin;
-  using std::end;
-  std::copy (begin(s), end(s), std::back_inserter(nw));
+  //getting the size of the new container
+  unsigned int i = std::count_if(std::begin(s), std::end(s), p);
+  //allocating the elements using i as size
+  T nw(i);
   //return (std::remove_if(begin(nw), end(nw), p));
-  //return std::copy_if (begin(s), end(s), std::backinserter(nw), p);
+  std::copy_if (std::begin(s), std::end(s), std::begin(nw), p);
   return nw;
 }
 
 TEST_CASE()
 {
   //bool is_even = [] (int n) { return n % 2 == 0; };
-  std::function<bool(int)>is_even = [] (int n) { return n % 2 == 0; };
+  std::function<bool(int)>is_even = [] (int n) { return (n % 2 == 0); };
   std::vector<int> v{1, 2, 3, 4, 5, 6};
   std::vector<int> all_even = filter(v, is_even);
+  for (auto i : all_even) {
+    std::cout << i << " ";
+  }
 
   REQUIRE(std::all_of(all_even.begin(), all_even.end(), [] (int i) {return (i % 2) == 0;}));
 }
