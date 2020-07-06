@@ -50,11 +50,11 @@ target_link_libraries(clock
 add_dependencies(clock glfw nanovg ${COPY_BINARY})
 
 # assignment 4
-add_executable(aufgabe4_2_und_4_3
+add_executable(aufgabe_2_und_3_und_9
   aufgabe_2_und_3.cpp
 )
 
-add_executable(aufgabe4_5_bis_7
+add_executable(aufgabe_5_bis_7
   aufgabe_5_bis_7.cpp
   circle.cpp
   vec2.cpp
@@ -62,13 +62,13 @@ add_executable(aufgabe4_5_bis_7
   window.cpp
   glew.c
 )
-target_link_libraries(aufgabe4_5_bis_7
+target_link_libraries(aufgabe_5_bis_7
   glfw
   ${GLFW_LIBRARIES}
   nanovg
   ${OPENGL_LIBRARIES}
   )
-add_dependencies(aufgabe4_5_bis_7 glfw nanovg ${COPY_BINARY})
+add_dependencies(aufgabe_5_bis_7 glfw nanovg ${COPY_BINARY})
 
 add_executable(aufgabe_8
   aufgabe_8.cpp

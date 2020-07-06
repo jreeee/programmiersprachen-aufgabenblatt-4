@@ -32,9 +32,9 @@ TEST_CASE("testing if the circle list is sorted using lambda - 4.6", "[srtd_circ
     sorted_circles.push_back(Circle(float(rand() % 501)));
   }
   //sorting the list and checking if it was sorted correctly using the lambda to compare the radii
-  auto sorting_lambda = (sorted_circles.begin(), sorted_circles.end(), [] (Circle const& lhs, Circle const& rhs) -> bool {
-    return lhs < rhs;
-    });
+  auto sorting_lambda = (sorted_circles.begin(), sorted_circles.end(), [] 
+            (Circle const& lhs, Circle const& rhs) -> bool {
+            return lhs < rhs ;});
   sorted_circles.sort(sorting_lambda);
   REQUIRE(std::is_sorted(sorted_circles.begin(), sorted_circles.end()));
 }

@@ -18,7 +18,7 @@ bool is_multiple_of_3(unsigned int i) {
 TEST_CASE()
 {
   std::vector<unsigned int> v(100);
-  std::generate(v.begin(), v.end(), rand);
+  std::transform(v.begin(), v.end(), v.begin(), [] (unsigned int el) { return rand()% 101;});
   v.erase(std::remove_if(v.begin(), v.end(), [] (unsigned int i) {return ((i % 3) != 0);}), v.end());
   REQUIRE(std::all_of(v.begin(), v.end(), is_multiple_of_3));
 }

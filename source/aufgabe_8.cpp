@@ -36,7 +36,7 @@ int main()
   std::copy(l_1.cbegin(), l_1.cend(), std::ostream_iterator<int>(std::cout, "\n"));
 
   std::cout << "\n\nv_0 with new values and from back to front\n";
-  //overwrites the values in v_0 
+  //overwrites the values in v_0 starting with the end and ending at the front
   std::generate(std::begin(v_0), std::end(v_0), std::rand);
   std::copy(v_0.crbegin(), v_0.crend(), std::ostream_iterator<int>(std::cout, "\n"));
 

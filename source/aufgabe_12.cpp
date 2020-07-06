@@ -3,7 +3,7 @@
 #include <cmath>      
 #include <algorithm>  //std::remove_if, std::all_of, std::generate
 #include <vector>     //std::vector<> 
-#include <functional>
+#include <functional> //std::function
 
 template<class T, class UnaryPredicate> 
 T filter(T s, UnaryPredicate p)
